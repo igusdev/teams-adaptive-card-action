@@ -10,7 +10,7 @@ Actions and sections are defined as YAML following the
 
 ## Usage
 
-Add `igus/teams-adaptive-card-action@v1` to your workflow.
+Add `igus/teams-adaptive-card-action@latest` to your workflow.
 
 ### Simple Example
 
@@ -25,10 +25,6 @@ jobs:
           webhook: ${{ secrets.TEAMS_WEBHOOK }}
           message: Hello world!
 ```
-
-…will produce an adaptive card like this:
-
-![simple example output](./example-simple.png)
 
 ### Advanced Example
 
@@ -52,10 +48,6 @@ jobs:
               title: Or here…
               url: https://somewhere.com/bar/
 ```
-
-…will produce an adaptive card like this:
-
-![advanced example output](./example-advanced.png)
 
 ### Sections Example
 
@@ -103,10 +95,6 @@ jobs:
                   text: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   wrap: true
 ```
-
-…will produce an adaptive card like this:
-
-![advanced example output](./example-sections.png)
 
 ## Options
 
