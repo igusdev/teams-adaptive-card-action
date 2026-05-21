@@ -1,0 +1,33 @@
+name: MS Teams Adaptive Card
+branding:
+  icon: message-square
+  color: blue
+description: 'A simple and lightning-fast GitHub action to send notifications as adaptive cards to an MS Teams webhook.'
+inputs:
+  webhook:
+    description: The MS Teams webhook URL to send the notification to. Obviously required.
+    required: true
+    default: ''
+  title:
+    description: The title of your card. Will be omitted if left empty.
+    required: false
+    default: ''
+  message:
+    description: The message content. Supports Markdown. Can also be empty.
+    required: true
+    default: ''
+  style:
+    description: 'Container style. Accepts: default, emphasis, good, attention, warning, accent. Default is "default".'
+    required: false
+    default: ''
+  actions:
+    description: 'A YAML array of Action.OpenUrl objects. Each item must have: type: Action.OpenUrl, title (button label), and url (HTTP(S) URL). Invalid or unsupported items will be logged and skipped.'
+    required: false
+    default: ''
+  sections:
+    description: 'A YAML array of Container objects following the Adaptive Cards schema. Each item must have type: Container and an items array of card elements (TextBlock, Image, FactSet, etc.). Invalid items are logged and skipped.'
+    required: false
+    default: ''
+runs:
+  using: node24
+  main: dist/index.js

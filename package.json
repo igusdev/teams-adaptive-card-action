@@ -1,0 +1,62 @@
+{
+  "name": "teams-adaptive-card-action",
+  "version": "0.1.0",
+  "description": "A simple and lightning-fast GitHub action to send notifications as adaptive cards to an MS Teams webhook by using the actionable adaptive card JSON format.",
+  "license": "MIT",
+  "keywords": [
+    "github",
+    "action",
+    "teams",
+    "adaptive",
+    "card",
+    "notification"
+  ],
+  "homepage": "https://github.com/igusdev/teams-adaptive-card-action#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igusdev/teams-adaptive-card-action.git"
+  },
+  "bugs": {
+    "url": "https://github.com/igusdev/teams-adaptive-card-action/issues"
+  },
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rm -rf dist && ncc build src/index.ts --license licenses.txt --minify --out dist --target es2023",
+    "lint": "eslint -c eslint.config.mjs .",
+    "lint:fix": "eslint -c eslint.config.mjs --fix .",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "preflight": "npm run lint && npm run format && npm run test && npm run build",
+    "prepare": "husky",
+    "test": "NODE_OPTIONS=--experimental-vm-modules NODE_NO_WARNINGS=1 jest",
+    "test:watch": "npm run test -- --watch",
+    "test-run": "ts-node-esm ./test-run/index.ts"
+  },
+  "dependencies": {
+    "@actions/core": "^3.0.1",
+    "yaml": "^2.9.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.5",
+    "@eslint/js": "^10.0.1",
+    "@ianvs/prettier-plugin-sort-imports": "^4.7.1",
+    "@microsoft/teams.cards": "^2.0.11",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^25.9.1",
+    "@typescript-eslint/eslint-plugin": "^8.59.4",
+    "@typescript-eslint/parser": "^8.59.4",
+    "@vercel/ncc": "^0.38.4",
+    "eslint": "^10.4.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-unicorn": "^64.0.0",
+    "globals": "^17.6.0",
+    "husky": "^9.1.7",
+    "jest": "^30.4.2",
+    "prettier": "^3.8.3",
+    "ts-jest": "^29.4.11",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
