@@ -13,11 +13,15 @@ inputs:
     required: false
     default: ''
   message:
-    description: The message content. Supports Markdown. Can also be empty.
-    required: true
+    description: The message content. Supports Markdown. Will be omitted if left empty.
+    required: false
     default: ''
   style:
     description: 'Container style. Accepts: default, emphasis, good, attention, warning, accent. Default is "default".'
+    required: false
+    default: ''
+  width:
+    description: 'Message width. Accepts: full. Will be omitted if left empty (default width).'
     required: false
     default: ''
   actions:

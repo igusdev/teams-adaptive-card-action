@@ -1,5 +1,5 @@
 import { endGroup, getInput, info, InputOptions, startGroup } from '@actions/core';
-import type { IContainer, ITextBlock } from '@microsoft/teams.cards';
+import type { IContainer, ITeamsCardProperties, ITextBlock } from '@microsoft/teams.cards';
 import { TeamsWebhookPayload } from './definitions.js';
 import { parseActions, parseSections, parseStyle } from './parsers.js';
 
@@ -9,11 +9,19 @@ export async function action() {
   const webhookURL = getInput('webhook', { ...inputOptions, required: true });
   const title = getInput('title', inputOptions);
   const message = getInput('message', inputOptions);
+  const width = getInput('width', inputOptions);
   const style = parseStyle(getInput('style', inputOptions));
   const actions = parseActions(getInput('actions', inputOptions));
   const sections = parseSections(getInput('sections', inputOptions));
 
+  const msteams: ITeamsCardProperties = {};
+
+  if (width === 'full') {
+    msteams.width = 'full';
+  }
+
   const mainItems: IContainer['items'] = [];
+
   if (title.length > 0) {
     mainItems.push({ type: 'TextBlock', text: title, size: 'Large', weight: 'Bolder' } satisfies ITextBlock);
   }
@@ -30,6 +38,7 @@ export async function action() {
           $schema: 'http://adaptivecards.io/schemas/adaptive-card.json',
           type: 'AdaptiveCard',
           version: '1.4',
+          msteams,
           body: [{ type: 'Container', style, items: mainItems }, ...sections],
           actions,
         },
