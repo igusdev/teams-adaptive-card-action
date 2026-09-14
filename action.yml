@@ -20,6 +20,10 @@ inputs:
     description: 'Container style. Accepts: default, emphasis, good, attention, warning, accent. Default is "default".'
     required: false
     default: ''
+  width:
+    description: 'Message width. Accepts: full. Will be omitted if left empty (default width).'
+    required: false
+    default: ''
   actions:
     description: 'A YAML array of Action.OpenUrl objects. Each item must have: type: Action.OpenUrl, title (button label), and url (HTTP(S) URL). Invalid or unsupported items will be logged and skipped.'
     required: false
